@@ -152,21 +152,26 @@ nav > div {
   z-index: 2;
   pointer-events: none;
 }
-.lamp {
+.lamp-stage::before {
+  content: "";
+  position: absolute;
+  width: min(76%, 520px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in oklch, var(--light), transparent 45%), transparent 70%);
+  opacity: calc(0.18 + var(--progress) * 0.42);
+  transform: translateY(15%);
+}
+.story-lamp {
+  position: relative;
   width: min(80%, 530px);
   max-height: 78vh;
-  overflow: visible;
+  object-fit: contain;
   filter: drop-shadow(0 30px 18px rgba(70, 32, 26, 0.22));
   transform: translateY(calc((var(--progress) - 0.5) * 8vh))
     rotate(calc((var(--progress) - 0.5) * 7deg))
     scale(calc(0.85 + var(--progress) * 0.17));
   transition: filter 0.4s;
-}
-.glow {
-  opacity: calc(0.3 + var(--progress) * 0.7);
-}
-.bulb-light {
-  opacity: calc(0.5 + var(--progress) * 0.5);
 }
 .lamp-shadow {
   position: absolute;
@@ -499,7 +504,7 @@ footer p:last-child {
     height: 55svh;
     top: 10vh;
   }
-  .lamp-stage .lamp {
+  .lamp-stage .story-lamp {
     width: 67%;
     max-height: 50svh;
   }
@@ -558,18 +563,17 @@ footer p:last-child {
   html {
     scroll-behavior: auto;
   }
-  .lamp,
+  .story-lamp,
   .piece::before,
   .piece > b,
   .vessel,
   .contact a span {
     transition: none !important;
   }
-  .lamp {
+  .story-lamp {
     transform: none !important;
   }
-  .glow,
-  .bulb-light {
-    opacity: 0.8;
+  .lamp-stage::before {
+    opacity: 0.45;
   }
 }
