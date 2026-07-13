@@ -1,4 +1,7 @@
 import { useEffect, useRef } from 'react';
+import pendantAsset from './assets/generated/pendant-v2.webp';
+import tableLampAsset from './assets/generated/table-lamp-v2.webp';
+import wallSconceAsset from './assets/generated/wall-sconce-v2.webp';
 
 function Lamp() {
   return <svg className="lamp" viewBox="0 0 520 700" role="img" aria-label="Sculptural ceramic pendant lamp with a terracotta pleated shade">
@@ -21,9 +24,9 @@ function Lamp() {
 }
 
 const collection = [
-  { name: 'Maré 01', type: 'Pendant', detail: 'Red clay · iron wash', color: 'rust' },
-  { name: 'Duna 02', type: 'Table light', detail: 'Stoneware · chalk glaze', color: 'chalk' },
-  { name: 'Fenda 03', type: 'Wall light', detail: 'Black clay · salt glaze', color: 'black' },
+  { name: 'Maré 01', type: 'Pendant', detail: 'Red clay · iron wash', color: 'rust', image: pendantAsset, alt: 'Hand-thrown terracotta pendant with a deep oxblood glazed collar' },
+  { name: 'Duna 02', type: 'Table light', detail: 'Stoneware · chalk glaze', color: 'chalk', image: tableLampAsset, alt: 'Rounded cream ceramic table lamp on a terracotta base' },
+  { name: 'Fenda 03', type: 'Wall light', detail: 'Black clay · salt glaze', color: 'black', image: wallSconceAsset, alt: 'Faceted oxblood ceramic wall light with a bronze mounting plate' },
 ];
 
 function App() {
@@ -53,8 +56,12 @@ function App() {
     <header className="hero">
       <div className="sun" aria-hidden="true" />
       <p className="hero-kicker">Ceramic lighting · Lisbon</p>
-      <h1>Light,<br /><span>given a body.</span></h1>
+      <h1>Light,<br /><span>given a<br />body.</span></h1>
       <p className="hero-intro">Each shade begins as local clay and ends as its own small atmosphere. Thrown, pressed, carved, and fired by hand in our Alcântara studio.</p>
+      <figure className="hero-object">
+        <img src={pendantAsset} alt="Maré 01 hand-thrown terracotta pendant" />
+        <figcaption><span>Maré 01</span><b>New fired form · 2026</b></figcaption>
+      </figure>
       <a href="#story" className="scroll-cue"><span>Follow the making</span><b>↓</b></a>
     </header>
 
@@ -71,7 +78,7 @@ function App() {
       <div className="shelf">
         {collection.map((item, index) => <a href="#contact" className={`piece ${item.color}`} key={item.name}>
           <span className="piece-number">0{index + 1}</span>
-          <div className="vessel" aria-hidden="true"><i/><i/></div>
+          <div className="vessel"><img src={item.image} alt={item.alt} /></div>
           <div className="piece-info"><h3>{item.name}</h3><p>{item.type}</p><small>{item.detail}</small></div>
           <b aria-hidden="true">↗</b>
         </a>)}
@@ -80,12 +87,12 @@ function App() {
 
     <section className="measurements">
       <p>Maré 01 / working dimensions</p>
-      <div className="diagram" aria-label="Maré pendant dimensions: 46 centimeters wide and 38 centimeters high" role="img"><Lamp /><span className="width">← 46 cm →</span><span className="height">38 cm</span></div>
+      <div className="diagram" aria-label="Maré pendant dimensions: 46 centimeters wide and 38 centimeters high" role="img"><img src={pendantAsset} alt="" /><span className="width">← 46 cm →</span><span className="height">38 cm</span></div>
       <div className="facts"><p><b>Material</b>Red earthenware</p><p><b>Light source</b>E27 LED, dimmable</p><p><b>Lead time</b>8 to 10 weeks</p><p><b>From</b>€780 incl. VAT</p></div>
     </section>
 
     <section className="contact" id="contact">
-      <div className="contact-lamp" aria-hidden="true"><Lamp /></div>
+      <div className="contact-lamp" aria-hidden="true"><img src={pendantAsset} alt="" /></div>
       <div><p>Residential and trade commissions</p><h2>Where will<br />the light land?</h2><p>Send the room, approximate dimensions, and your location. We will reply with a suitable form, finish samples, and a clear timeline.</p><a href="mailto:studio@terre-tide.example?subject=Ceramic%20light%20commission">Begin a commission <span>↗</span></a></div>
     </section>
     <footer><a className="logo" href="#top">TERRE <i>&</i> TIDE</a><p>Rua da Indústria 18, Lisboa<br />Fictional portfolio concept</p><p>Instagram · Pinterest<br />© 2026</p></footer>

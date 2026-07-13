@@ -64,6 +64,31 @@ nav > div {
   position: relative;
   overflow: hidden;
 }
+.hero-object {
+  position: absolute;
+  z-index: 1;
+  right: clamp(20px, 5vw, 80px);
+  top: 10vh;
+  width: min(29vw, 410px);
+  margin: 0;
+  transform: rotate(3deg);
+}
+.hero-object img {
+  width: 100%;
+  display: block;
+  filter: drop-shadow(0 38px 28px color-mix(in oklch, var(--wine), transparent 76%));
+}
+.hero-object figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--wine);
+  font-size: 11px;
+}
+.hero-object figcaption b {
+  font-weight: 500;
+}
 .sun {
   position: absolute;
   width: min(46vw, 650px);
@@ -81,21 +106,21 @@ nav > div {
 .hero h1 {
   position: relative;
   font:
-    700 clamp(5.2rem, 14vw, 13.5rem) / 0.66 Grenze,
+    700 clamp(5.2rem, 11vw, 10.8rem) / 0.68 Grenze,
     serif;
   letter-spacing: -0.07em;
   margin: 9vh 0 0;
-  max-width: 1300px;
+  max-width: 68vw;
 }
 .hero h1 span {
-  margin-left: 12vw;
+  margin-left: 10vw;
   color: var(--terra);
 }
 .hero-intro {
-  position: absolute;
-  right: 8vw;
-  bottom: 8vh;
-  width: min(360px, 35vw);
+  position: relative;
+  z-index: 2;
+  width: min(390px, 34vw);
+  margin: 42px 0 76px;
   font-size: 18px;
   line-height: 1.55;
 }
@@ -183,7 +208,8 @@ nav > div {
   line-height: 1.5;
 }
 .earth {
-  color: var(--wine);
+  background: oklch(50% 0.13 42);
+  color: var(--chalk);
 }
 .water {
   background: var(--glaze);
@@ -294,28 +320,14 @@ nav > div {
   place-items: center;
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.vessel img {
+  width: min(92%, 390px);
+  height: 330px;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 18px color-mix(in oklch, var(--wine), transparent 80%));
+}
 .piece:hover .vessel {
   transform: translateY(-15px) rotate(-3deg) scale(1.06);
-}
-.vessel i:first-child {
-  display: block;
-  width: 55%;
-  height: 55%;
-  border-radius: 50% 50% 15% 15%;
-  background: linear-gradient(
-    90deg,
-    color-mix(in oklch, var(--fill), var(--wine) 28%),
-    color-mix(in oklch, var(--fill), var(--chalk) 30%)
-  );
-  box-shadow: inset -25px -10px 35px rgba(60, 20, 20, 0.2);
-}
-.piece.chalk .vessel i:first-child {
-  border-radius: 45% 45% 8% 8%;
-  height: 48%;
-}
-.piece.black .vessel i:first-child {
-  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
-  border-radius: 4%;
 }
 .piece-info {
   margin-top: auto;
@@ -351,10 +363,11 @@ nav > div {
   display: grid;
   place-items: center;
 }
-.diagram .lamp {
+.diagram img {
+  width: min(76%, 520px);
   max-height: 650px;
-  width: 80%;
-  transform: none;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 24px color-mix(in oklch, var(--wine), transparent 72%));
 }
 .diagram .width {
   position: absolute;
@@ -398,9 +411,12 @@ nav > div {
   place-items: center;
   transform: translateY(18%);
 }
-.contact-lamp .lamp {
-  width: 92%;
+.contact-lamp img {
+  width: min(78%, 570px);
+  max-height: 88vh;
+  object-fit: contain;
   transform: rotate(8deg);
+  filter: drop-shadow(0 36px 26px color-mix(in oklch, var(--wine), transparent 64%));
 }
 .contact > div:last-child {
   padding: clamp(70px, 10vw, 150px) clamp(30px, 6vw, 100px);
@@ -459,15 +475,20 @@ footer p:last-child {
     margin-left: 0;
   }
   .hero-intro {
-    position: relative;
-    right: auto;
-    bottom: auto;
     width: auto;
     max-width: 400px;
-    margin: 80px 0 60px;
+    margin: 38px 0 28px;
   }
   .sun {
     width: 75vw;
+  }
+  .hero-object {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: min(78vw, 390px);
+    margin: 18px auto 70px;
+    transform: rotate(2deg);
   }
   .object-story {
     display: block;
@@ -522,7 +543,7 @@ footer p:last-child {
   .contact-lamp {
     height: 55vh;
   }
-  .contact-lamp .lamp {
+  .contact-lamp img {
     height: 70vh;
   }
   footer {
