@@ -1,0 +1,554 @@
+@import url("https://fonts.googleapis.com/css2?family=Grenze:wdth,wght@75..125,400..800&family=Manrope:wght@400;500;600&display=swap");
+:root {
+  --chalk: oklch(96% 0.018 80);
+  --terra: oklch(62% 0.13 42);
+  --glaze: oklch(45% 0.08 193);
+  --wine: oklch(31% 0.09 20);
+  --light: oklch(88% 0.12 82);
+  font-family: Manrope, sans-serif;
+  color: var(--wine);
+  background: var(--chalk);
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+}
+a {
+  color: inherit;
+}
+::selection {
+  background: var(--wine);
+  color: var(--chalk);
+}
+nav {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 24px clamp(20px, 4vw, 65px);
+  font-size: 12px;
+  align-items: start;
+}
+nav p {
+  margin: 0;
+}
+nav > div {
+  justify-self: end;
+  display: flex;
+  gap: 30px;
+}
+.logo {
+  font:
+    700 22px/1 Grenze,
+    serif;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.logo i {
+  color: var(--terra);
+  font-weight: 400;
+}
+.hero {
+  min-height: 100svh;
+  background: var(--chalk);
+  padding: clamp(150px, 20vh, 220px) clamp(20px, 4vw, 65px) 60px;
+  position: relative;
+  overflow: hidden;
+}
+.sun {
+  position: absolute;
+  width: min(46vw, 650px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--light);
+  right: -4vw;
+  top: 9vh;
+  box-shadow: 0 0 100px 70px color-mix(in oklch, var(--light), transparent 48%);
+}
+.hero-kicker {
+  position: relative;
+  font-size: 13px;
+}
+.hero h1 {
+  position: relative;
+  font:
+    700 clamp(5.2rem, 14vw, 13.5rem) / 0.66 Grenze,
+    serif;
+  letter-spacing: -0.07em;
+  margin: 9vh 0 0;
+  max-width: 1300px;
+}
+.hero h1 span {
+  margin-left: 12vw;
+  color: var(--terra);
+}
+.hero-intro {
+  position: absolute;
+  right: 8vw;
+  bottom: 8vh;
+  width: min(360px, 35vw);
+  font-size: 18px;
+  line-height: 1.55;
+}
+.scroll-cue {
+  position: absolute;
+  left: clamp(20px, 4vw, 65px);
+  bottom: 38px;
+  display: flex;
+  gap: 20px;
+  text-decoration: none;
+  align-items: center;
+}
+.scroll-cue b {
+  font-size: 28px;
+}
+.object-story {
+  --progress: 0;
+  position: relative;
+  background: var(--terra);
+}
+.lamp-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  width: 50%;
+  margin-left: 50%;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
+.lamp {
+  width: min(80%, 530px);
+  max-height: 78vh;
+  overflow: visible;
+  filter: drop-shadow(0 30px 18px rgba(70, 32, 26, 0.22));
+  transform: translateY(calc((var(--progress) - 0.5) * 8vh))
+    rotate(calc((var(--progress) - 0.5) * 7deg))
+    scale(calc(0.85 + var(--progress) * 0.17));
+  transition: filter 0.4s;
+}
+.glow {
+  opacity: calc(0.3 + var(--progress) * 0.7);
+}
+.bulb-light {
+  opacity: calc(0.5 + var(--progress) * 0.5);
+}
+.lamp-shadow {
+  position: absolute;
+  bottom: 7vh;
+  width: 50%;
+  height: 30px;
+  border-radius: 50%;
+  background: color-mix(in oklch, var(--wine), transparent 65%);
+  filter: blur(10px);
+  transform: scale(calc(1.2 - var(--progress) * 0.3));
+}
+.chapter {
+  height: 100svh;
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: clamp(25px, 6vw, 90px);
+  position: relative;
+}
+.chapter:first-of-type {
+  margin-top: -100svh;
+}
+.chapter > div {
+  max-width: 540px;
+}
+.chapter span {
+  font-size: 12px;
+}
+.chapter h2 {
+  font:
+    700 clamp(5rem, 11vw, 10rem) / 0.8 Grenze,
+    serif;
+  margin: 15px 0 25px;
+  letter-spacing: -0.06em;
+}
+.chapter p {
+  font-size: clamp(18px, 2vw, 25px);
+  line-height: 1.5;
+}
+.earth {
+  color: var(--wine);
+}
+.water {
+  background: var(--glaze);
+  color: var(--chalk);
+}
+.fire {
+  background: var(--wine);
+  color: var(--chalk);
+}
+.room {
+  background: var(--light);
+  color: var(--wine);
+}
+.chapter:nth-of-type(even) > div {
+  grid-column: 1;
+}
+.collection {
+  background: var(--chalk);
+  padding: clamp(90px, 14vw, 190px) clamp(20px, 4vw, 65px);
+}
+.collection-head {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 100px;
+}
+.collection-head > p {
+  font-size: 13px;
+}
+.collection-head > p:last-child {
+  font-size: 17px;
+  line-height: 1.5;
+}
+.collection h2 {
+  font:
+    700 clamp(4rem, 8vw, 8rem) / 0.8 Grenze,
+    serif;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--wine);
+  border-bottom: 1px solid var(--wine);
+}
+.piece {
+  position: relative;
+  min-height: 630px;
+  padding: 25px;
+  text-decoration: none;
+  border-right: 1px solid var(--wine);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.piece:last-child {
+  border: 0;
+}
+.piece::before {
+  content: "";
+  position: absolute;
+  inset: 100% 0 0;
+  background: var(--fill);
+  transition: inset 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.piece:hover::before {
+  inset: 0;
+}
+.piece.rust {
+  --fill: var(--terra);
+}
+.piece.chalk {
+  --fill: var(--light);
+}
+.piece.black {
+  --fill: var(--wine);
+}
+.piece.black:hover {
+  color: var(--chalk);
+}
+.piece-number,
+.piece-info,
+.piece > b,
+.vessel {
+  position: relative;
+  z-index: 1;
+}
+.piece > b {
+  position: absolute;
+  right: 25px;
+  top: 18px;
+  font-size: 30px;
+  transform: translate(-8px, 8px);
+  opacity: 0;
+  transition:
+    transform 0.35s,
+    opacity 0.35s;
+}
+.piece:hover > b {
+  transform: none;
+  opacity: 1;
+}
+.vessel {
+  height: 400px;
+  display: grid;
+  place-items: center;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.piece:hover .vessel {
+  transform: translateY(-15px) rotate(-3deg) scale(1.06);
+}
+.vessel i:first-child {
+  display: block;
+  width: 55%;
+  height: 55%;
+  border-radius: 50% 50% 15% 15%;
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--fill), var(--wine) 28%),
+    color-mix(in oklch, var(--fill), var(--chalk) 30%)
+  );
+  box-shadow: inset -25px -10px 35px rgba(60, 20, 20, 0.2);
+}
+.piece.chalk .vessel i:first-child {
+  border-radius: 45% 45% 8% 8%;
+  height: 48%;
+}
+.piece.black .vessel i:first-child {
+  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
+  border-radius: 4%;
+}
+.piece-info {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.piece-info h3 {
+  font:
+    700 42px Grenze,
+    serif;
+  margin: 0;
+}
+.piece-info p {
+  margin: 7px 0;
+  text-align: right;
+}
+.piece-info small {
+  grid-column: 1/-1;
+}
+.measurements {
+  background: var(--glaze);
+  color: var(--chalk);
+  padding: 80px clamp(20px, 4vw, 65px);
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  min-height: 850px;
+}
+.measurements > p {
+  font-size: 12px;
+}
+.diagram {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.diagram .lamp {
+  max-height: 650px;
+  width: 80%;
+  transform: none;
+}
+.diagram .width {
+  position: absolute;
+  bottom: 35px;
+  left: 20%;
+  right: 20%;
+  border-top: 1px solid var(--chalk);
+  text-align: center;
+  padding-top: 8px;
+}
+.diagram .height {
+  position: absolute;
+  right: 8%;
+  top: 35%;
+  writing-mode: vertical-rl;
+  border-left: 1px solid var(--chalk);
+  padding-left: 8px;
+}
+.facts {
+  align-self: end;
+}
+.facts p {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--chalk);
+  padding: 16px 0;
+  margin: 0;
+  font-size: 13px;
+}
+.contact {
+  min-height: 100svh;
+  background: var(--wine);
+  color: var(--chalk);
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  overflow: hidden;
+}
+.contact-lamp {
+  background: var(--terra);
+  display: grid;
+  place-items: center;
+  transform: translateY(18%);
+}
+.contact-lamp .lamp {
+  width: 92%;
+  transform: rotate(8deg);
+}
+.contact > div:last-child {
+  padding: clamp(70px, 10vw, 150px) clamp(30px, 6vw, 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contact h2 {
+  font:
+    700 clamp(4.4rem, 9vw, 9rem) / 0.78 Grenze,
+    serif;
+  letter-spacing: -0.06em;
+  margin: 40px 0;
+}
+.contact p {
+  max-width: 480px;
+  line-height: 1.6;
+}
+.contact a {
+  margin-top: 55px;
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 0;
+  border-block: 1px solid var(--chalk);
+  font-size: 20px;
+  text-decoration: none;
+}
+.contact a span {
+  font-size: 34px;
+  transition: transform 0.25s;
+}
+.contact a:hover span {
+  transform: translate(6px, -6px);
+}
+footer {
+  padding: 35px clamp(20px, 4vw, 65px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: var(--chalk);
+  font-size: 12px;
+}
+footer p {
+  margin: 0;
+}
+footer p:last-child {
+  text-align: right;
+}
+@media (max-width: 800px) {
+  nav {
+    grid-template-columns: 1fr 1fr;
+  }
+  nav p {
+    display: none;
+  }
+  .hero h1 span {
+    margin-left: 0;
+  }
+  .hero-intro {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: auto;
+    max-width: 400px;
+    margin: 80px 0 60px;
+  }
+  .sun {
+    width: 75vw;
+  }
+  .object-story {
+    display: block;
+  }
+  .lamp-stage {
+    width: 100%;
+    margin: 0;
+    height: 55svh;
+    top: 10vh;
+  }
+  .lamp-stage .lamp {
+    width: 67%;
+    max-height: 50svh;
+  }
+  .chapter,
+  .chapter:first-of-type {
+    height: auto;
+    min-height: 80svh;
+    margin: 0;
+    grid-template-columns: 1fr;
+    padding-top: 36vh;
+    align-items: end;
+  }
+  .chapter > div,
+  .chapter:nth-of-type(even) > div {
+    grid-column: 1;
+  }
+  .collection-head {
+    grid-template-columns: 1fr;
+  }
+  .shelf {
+    grid-template-columns: 1fr;
+  }
+  .piece {
+    min-height: 540px;
+    border-right: 0;
+    border-bottom: 1px solid var(--wine);
+  }
+  .measurements {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .diagram {
+    min-height: 600px;
+  }
+  .facts {
+    margin-top: 60px;
+  }
+  .contact {
+    grid-template-columns: 1fr;
+  }
+  .contact-lamp {
+    height: 55vh;
+  }
+  .contact-lamp .lamp {
+    height: 70vh;
+  }
+  footer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  footer p:last-child {
+    text-align: left;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .lamp,
+  .piece::before,
+  .piece > b,
+  .vessel,
+  .contact a span {
+    transition: none !important;
+  }
+  .lamp {
+    transform: none !important;
+  }
+  .glow,
+  .bulb-light {
+    opacity: 0.8;
+  }
+}
